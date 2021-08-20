@@ -25,24 +25,24 @@ print(df['Profit'].describe())
 pd.options.display.float_format = '{:20,.2f}'.format
 
 # Total profit
-totalProfit = df['Profit'].sum()
-print('Total profit = ${:0,.2f}'.format(totalProfit))
+total_profit = df['Profit'].sum()
+print('Total profit = ${:0,.2f}'.format(total_profit))
 
 # Create a Cost column and total cost
 df['Cost'] = df['Sales'] - df['Profit']
-totalCost = (df['Cost'].sum())
-print('Total cost = ${:0,.2f}'.format(totalCost))
+total_cost = (df['Cost'].sum())
+print('Total cost = ${:0,.2f}'.format(total_cost))
 
 # Profit in percentage
-print('Profit(%) = {:0,.2f}%'.format(totalProfit / totalCost * 100))
+print('Profit(%) = {:0,.2f}%'.format(total_profit / total_cost * 100))
 
 # Which segment gives less profit and more costs
-lessProfitSegment = df.groupby('Segment')['Profit'].min().plot.bar(title='Least Profitable Segment',
+less_profit_segment = df.groupby('Segment')['Profit'].min().plot.bar(title='Least Profitable Segment',
                                                                    fontsize=9)  # Consumers - Corporate -Home
 plt.ylabel('Profit ($)')
 plt.xticks(rotation='horizontal')
 plt.show()
-costlySegment = df.groupby('Segment')['Cost'].max().sort_values(ascending=False).plot.bar(title='Costly Segment',
+costly_segment = df.groupby('Segment')['Cost'].max().sort_values(ascending=False).plot.bar(title='Costly Segment',
                                                                                           fontsize=9)  # Home Office - Corporate - Consumer
 plt.ylabel('Cost ($)')
 plt.xticks(rotation='horizontal')
@@ -108,4 +108,4 @@ plt.show()
 # Texas has the least profit, but it's the third of the sales
 
 # Save analysis as csv
-df.to_csv('df_SuperStore_analysis.csv', index=False)
+df.to_csv('df_super_store_analysis.csv', index=False)
